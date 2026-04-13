@@ -1,0 +1,5 @@
+langchain
+langchain-postgres       # LangChain's official Postgres integration
+langchain-huggingface    # For local, free embeddings
+sentence-transformers    # Under-the-hood engine for local models
+psycopg-pool             # Database connection pooling

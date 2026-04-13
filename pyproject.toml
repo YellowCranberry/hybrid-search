@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dev"
+version = "0.1.0"
+description = "A plug-and-play hybrid search engine using PGVector and LangChain."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "langchain>=0.1.0",
+    "langchain-postgres>=0.0.3",
+    "langchain-huggingface>=0.0.1",
+    "langchain-experimental>=0.0.50",
+    "sentence-transformers>=2.5.0",
+    "psycopg-pool>=3.2.0",
+    "sqlalchemy>=2.0.0"
+]
+
+# This is where we can add FastAPI as an optional install later!
+[project.optional-dependencies]
+api = ["fastapi", "uvicorn"]

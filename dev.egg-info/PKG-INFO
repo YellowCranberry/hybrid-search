@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: dev
+Version: 0.1.0
+Summary: A plug-and-play hybrid search engine using PGVector and LangChain.
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: langchain>=0.1.0
+Requires-Dist: langchain-postgres>=0.0.3
+Requires-Dist: langchain-huggingface>=0.0.1
+Requires-Dist: langchain-experimental>=0.0.50
+Requires-Dist: sentence-transformers>=2.5.0
+Requires-Dist: psycopg-pool>=3.2.0
+Requires-Dist: sqlalchemy>=2.0.0
+Provides-Extra: api
+Requires-Dist: fastapi; extra == "api"
+Requires-Dist: uvicorn; extra == "api"
