@@ -1,5 +1,13 @@
-langchain
-langchain-postgres       # LangChain's official Postgres integration
-langchain-huggingface    # For local, free embeddings
-sentence-transformers    # Under-the-hood engine for local models
-psycopg-pool             # Database connection pooling
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-postgres>=0.0.3
+langchain-huggingface>=0.0.3
+langchain-experimental>=0.0.50
+langchain-text-splitters>=0.2.0
+sentence-transformers>=2.7.0
+psycopg[binary]>=3.1.0
+psycopg-pool>=3.2.0
+sqlalchemy>=2.0.0
+beautifulsoup4>=4.12.0
+lxml>=5.0.0
+transformers>=4.38.0

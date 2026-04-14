@@ -2,6 +2,7 @@ from langchain_experimental.text_splitter import SemanticChunker
 from langchain_text_splitters import MarkdownHeaderTextSplitter
 from typing import List, Dict, Any
 from langchain_core.documents import Document
+from bs4 import BeautifulSoup
 
 class ChunkingManager:
     def __init__(self, embedding_model):
@@ -27,10 +28,18 @@ class ChunkingManager:
             ]
         )
 
-    def process_text(self, text: str, metadata: dict, use_markdown_preprocessing: bool = True) -> List[Document]:
+    def process_text(self, text: str, metadata: dict, use_markdown_preprocessing: bool = True, strip_html: bool = True) -> List[Document]:
         """
         Takes raw text, applies smart chunking, and attaches metadata to EVERY chunk.
+        Optionally strips HTML out before chunking.
         """
+        if strip_html:
+            # Parse with BeautifulSoup to remove scripts, styles, and extract text
+            soup = BeautifulSoup(text, "html.parser")
+            for script_or_style in soup(["script", "style"]):
+                script_or_style.decompose()
+            text = soup.get_text(separator="\n", strip=True)
+
         final_chunks = []
 
         if use_markdown_preprocessing:
