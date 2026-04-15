@@ -1,7 +1,7 @@
 
 """
 
-    ----------------------this is a example sync module to connect you database to postgresql database with pg-vector extension ---------------------------
+    ----------------------this is a example sync module to connect your database to postgresql database with pg-vector extension ---------------------------
 
 """
 # sync_search.py
