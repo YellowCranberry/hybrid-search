@@ -10,7 +10,7 @@ from dev.core.engine import HybridSearchEngine
 
 # 1. Connect to the empty Search Engine (Postgres)
 search_engine = HybridSearchEngine(
-    db_url="postgresql+psycopg://postgres:1234@localhost:5433/vectordb"   
+    db_url="postgresql+psycopg://<username>:<password>@<host>:<port>/<database>"   
 )
 
 print("Starting the sync process...")
