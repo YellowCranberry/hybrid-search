@@ -131,3 +131,14 @@ tracker = UpdateManager(
 processed = tracker.sync()
 print(f"Synced {processed} new or updated documents.")
 ```
+
+
+## 📦 Examples
+
+This project includes an external examples repository.
+
+🔗 [Open Examples](https://github.com/your-username/your-other-repo)
+(i included the hybrid-search in my blog website with some pre-loaded articles below are the query results)
+![Demo](assets/query_result.png)
+
+Thank You !!!
