@@ -139,6 +139,6 @@ This project includes an external examples repository.
 
 🔗 [Open Examples](https://github.com/your-username/your-other-repo)
 (i included the hybrid-search in my blog website with some pre-loaded articles below are the query results)
-![Demo](assets/query_result.jpeg)
+![Demo](assets/demo.jpeg)
 
 Thank You !!!
