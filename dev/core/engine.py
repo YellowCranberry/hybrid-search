@@ -264,11 +264,17 @@ class HybridSearchEngine:
                     if val in seen:
                         continue
                     seen.add(val)
+            
+            # Reciprocal Rank Fusion (RRF) outputs raw math scores (max ~0.0327)
+            # We normalize this to a beautiful 0.0 -> 1.0 (0% to 100%) confidence scale for users
+            raw_score = float(result.rrf_score)
+            max_possible_rrf = (1.0 / 61.0) * 2  # rank 1 in both searches
+            normalized_score = min(raw_score / max_possible_rrf, 1.0)
                     
             candidates.append({
                 "content": result.document,
                 "metadata": result.cmetadata,
-                "score": float(result.rrf_score),
+                "score": round(normalized_score, 4),
                 "rank": len(candidates) + 1
             })
             
