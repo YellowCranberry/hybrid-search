@@ -131,6 +131,50 @@ tracker = UpdateManager(
 processed = tracker.sync()
 print(f"Synced {processed} new or updated documents.")
 ```
+### Flask Integration
+
+For **Flask applications**, the package provides a Flask extension that manages the `HybridSearchEngine` lifecycle and configuration. Initialize it once during application startup and access the search APIs through the extension.
+
+```python
+from flask import Flask
+from dev.flask_ext import HybridSearch
+
+search = HybridSearch()
+
+def create_app():
+    app = Flask(__name__)
+
+    app.config["HYBRID_SEARCH_DB_URL"] = (
+        "postgresql+psycopg://postgres:password@localhost:5432/mydb"
+    )
+
+    # Optional configuration
+    app.config["HYBRID_SEARCH_COLLECTION"] = "hybrid_search_docs"
+    app.config["HYBRID_SEARCH_EMBEDDING_MODEL"] = (
+        "sentence-transformers/all-MiniLM-L6-v2"
+    )
+    app.config["HYBRID_SEARCH_LLM_MODEL"] = (
+        "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+    )
+
+    search.init_app(app)
+
+    return app
+```
+
+Use the extension exactly as you would `HybridSearchEngine`:
+
+```python
+results, metrics = search.search_hybrid(
+    "30 day refund policy",
+    top_k=5
+)
+
+for result in results:
+    print(result["metadata"]["title"])
+```
+
+The extension exposes the same public APIs as `HybridSearchEngine` while sourcing its configuration from the Flask application.
 
 
 ## 📦 Examples
